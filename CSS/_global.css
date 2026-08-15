@@ -1,0 +1,11 @@
+@import url(reset.css);
+@import url(header.css);
+@import url(body.css);
+
+body{
+    background-color: gray;
+}
+
+:root{
+
+}
