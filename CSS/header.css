@@ -2,28 +2,35 @@ header{
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    background-color: blueviolet;
+    background-color: #151515;
     position: sticky;
     top: 0px;
     max-height: 170px;
+    z-index: 10;
 }
 
 .logo{
     display: flex;
     justify-content: center;
     padding: 10px;
-}
-.logo img{
+}.logo img{
     height: 150px;
 }
+
 .navigation{
     display: grid;
     grid-template-columns: 150px 150px 150px 150px 150px;
     justify-content: space-evenly;
-    border: solid 20px solid red
 }
+
 .navigation a{
     text-align: center;
-    border: 2px solid rgb(205, 177, 17);
+    color: var(--color-buttonBorder);
+    border: 3px solid var(--color-buttonBorder);
+    background-color: #151515;
     border-radius: 5px;
+    transition: var(--animation-hover);
+} .navigation a:hover{
+    box-shadow: var(--buttonBorder-effect);
+    transform: scale(1.1);
 }

@@ -25,18 +25,22 @@ main{
     var(--color-bodyBackground));
     background-color: var(--color-mainBackground) ;
     margin: 20px;
-    border: 3px solid var(--color-mainBorder);
-    box-shadow: var(--border-effect);
+    box-shadow: var(--cardBorder-effect);
     border-radius: 5px;
 }
 
 .content{
     padding: 10px;
-    border: 3px solid var(--color-mainBorder);
-    box-shadow: var(--border-effect);
+    color: var(--color-buttonBorder);
+    background-color: #2a2a2a;
+    border: 3px solid var(--color-buttonBorder);
+    box-shadow: var(--cardBorder-effect);
     height: 300px;
     margin: 50px;
     border-radius: 5px;
     scroll-margin-top: 220px;
+    transition: 0.5s ease;
+}.content:hover{
+    transform: scale(1.01);
+    box-shadow: var(--cardBorder-effectHover);
 }
-

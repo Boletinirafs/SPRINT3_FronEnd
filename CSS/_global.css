@@ -3,6 +3,7 @@
 @import url(body.css);
 @import url(footer.css);
 
+
 body{
 
 }
@@ -10,9 +11,11 @@ body{
 :root{
     /* specific colors */
     --color-bodyBackground: #383838ff;
-    --color-mainBackground: #5e5a5a58;
-    --color-mainBorder: #c99c05;
-/* 5e5a5a58 */
+    --color-mainBackground: #4d4d4d;
+    --color-buttonBorder: #c7a50a;
+    --color-buttonBorderEffect:#e0b805 ;
+    --color-cardBorderEffect: #000000;
+    --color-menuSelect: ;
 
     /* modules stylization */
     --main-opacity: 0.5;
@@ -20,6 +23,11 @@ body{
 
 
     /* elements stylization */
-    --border-effect: 0 3px 5px var(--color-mainBorder);
+    --cardBorder-effect: 0 3px 5px var(--color-cardBorderEffect);
+    --cardBorder-effectHover: 0 3px 10px var(--color-cardBorderEffect);
+    --buttonBorder-effect: 0px 1px 10px var(--color-buttonBorderEffect);
+    
+    /* elements animation */
 
+    --animation-hover: 0.5s ease;
 }

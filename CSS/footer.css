@@ -1,6 +1,7 @@
 footer{
     height: 200px;
-    background-color: bisque;
+    background-color: #151515;
+    color: var(--color-buttonBorder);
     text-align: center;
     align-content: center;
 }
