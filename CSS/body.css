@@ -1,6 +1,24 @@
+
+#solucao {grid-area:solucao;}
+#publico {grid-area:publico;}
+#galeria {grid-area:galeria;}
+#equipe {grid-area:equipe;}
+#contato {grid-area:contato;}
+
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    'solucao solucao'
+    'publico galeria'
+    'equipe contato'
+    ;
+}
+
 .content{
     border: 2px solid red;
-    height: 200px;
+    height: 300px;
     margin: 50px;
     scroll-margin-top: 220px;
 }
+
