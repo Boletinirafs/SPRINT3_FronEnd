@@ -4,9 +4,22 @@
 @import url(footer.css);
 
 body{
-    background-color: gray;
+
 }
 
 :root{
+    /* specific colors */
+    --color-bodyBackground: #383838ff;
+    --color-mainBackground: #5e5a5a58;
+    --color-mainBorder: #c99c05;
+/* 5e5a5a58 */
+
+    /* modules stylization */
+    --main-opacity: 0.5;
+    
+
+
+    /* elements stylization */
+    --border-effect: 0 3px 5px var(--color-mainBorder);
 
 }

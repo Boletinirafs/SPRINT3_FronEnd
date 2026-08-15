@@ -5,6 +5,12 @@
 #equipe {grid-area:equipe;}
 #contato {grid-area:contato;}
 
+body{
+    background-color: var(--color-bodyBackground);
+    
+}
+
+
 main{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -13,12 +19,24 @@ main{
     'publico galeria'
     'equipe contato'
     ;
+    background: linear-gradient(200deg,
+    var(--color-bodyBackground),
+    var(--color-mainBackground),
+    var(--color-bodyBackground));
+    background-color: var(--color-mainBackground) ;
+    margin: 20px;
+    border: 3px solid var(--color-mainBorder);
+    box-shadow: var(--border-effect);
+    border-radius: 5px;
 }
 
 .content{
-    border: 2px solid red;
+    padding: 10px;
+    border: 3px solid var(--color-mainBorder);
+    box-shadow: var(--border-effect);
     height: 300px;
     margin: 50px;
+    border-radius: 5px;
     scroll-margin-top: 220px;
 }
 
