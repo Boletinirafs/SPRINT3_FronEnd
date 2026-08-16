@@ -2,35 +2,109 @@ header{
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    background-color: #151515;
+    gap: 40px;
+    padding: 14px 48px;
+    background-color: var(--cor-fundo-header);
+    border-bottom: 1px solid var(--cor-borda);
     position: sticky;
-    top: 0px;
-    max-height: 170px;
-    z-index: 10;
+    top: 0;
+    z-index: 100;
+}
+
+
+.logo-complete{
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 12px;
 }
 
 .logo{
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}.logo img{
-    height: 150px;
+    height: 60px;
+    width: auto;
 }
 
-.navigation{
+.logo-text{
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--cor-destaque);
+    line-height: 1;
+}
+
+
+.navigation ul{
     display: grid;
-    grid-template-columns: 150px 150px 150px 150px 150px;
-    justify-content: space-evenly;
+    grid-auto-flow: column;
+    justify-content: end;
+    gap: 28px;
 }
 
 .navigation a{
-    text-align: center;
-    color: var(--color-buttonBorder);
-    border: 3px solid var(--color-buttonBorder);
-    background-color: #151515;
-    border-radius: 5px;
-    transition: var(--animation-hover);
-} .navigation a:hover{
-    box-shadow: var(--buttonBorder-effect);
-    transform: scale(1.1);
+    display: block;
+    padding: 4px 2px;
+    color: var(--cor-texto-fraco);
+    font-size: 15px;
+    border-bottom: 1px solid transparent;
+    transition: var(--transicao-cor);
+}
+
+.navigation a:hover{
+    color: var(--cor-destaque);
+    border-bottom-color: var(--cor-destaque);
+}
+
+
+@media (max-width: 1024px){
+    :root{
+        --altura-header: 175px;
+    }
+
+    header{
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 16px;
+        padding: 14px 20px;
+    }
+
+    .logo-text{
+        font-size: 24px;
+    }
+
+    .navigation ul{
+        grid-auto-flow: row;
+        grid-template-columns: repeat(4, auto);
+        justify-content: center;
+        gap: 14px 24px;
+    }
+}
+
+
+@media (max-width: 600px){
+    :root{
+        --altura-header: 185px;
+    }
+
+    header{
+        padding: 12px 14px;
+        gap: 12px;
+    }
+
+    .logo{
+        height: 42px;
+    }
+
+    .logo-text{
+        font-size: 19px;
+        letter-spacing: 2px;
+    }
+
+    .navigation ul{
+        grid-template-columns: repeat(3, auto);
+        gap: 10px 16px;
+    }
+
+    .navigation a{
+        font-size: 13px;
+    }
 }
