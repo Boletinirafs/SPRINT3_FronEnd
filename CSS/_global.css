@@ -1,49 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
+/* ==========================================================================
+   VisuAll — Tokens de design
+   Fonte única de verdade para cor, tipografia, espaçamento e movimento.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
 @import url(reset.css);
 @import url(header.css);
 @import url(body.css);
 @import url(footer.css);
 
 :root{
-    --cor-fundo: #0a0a0c;
-    --cor-fundo-header: #050505;
+    /* --- Superfícies ------------------------------------------------------ */
+    --cor-fundo: #08090b;
+    --cor-fundo-alt: #0b0d11;
+    --cor-superficie: #12141a;
+    --cor-superficie-alt: #171a21;
+    --cor-superficie-fraca: rgba(255, 255, 255, 0.025);
 
+    /* --- Bordas ----------------------------------------------------------- */
+    --cor-borda: #23262f;
+    --cor-borda-forte: #363b47;
+    --cor-borda-destaque: rgba(255, 211, 77, 0.38);
 
-    --cor-cartao: #474235;
-    --cor-cartao-alt: #5a5140;
+    /* --- Acento ----------------------------------------------------------- */
+    --cor-destaque: #ffd34d;
+    --cor-destaque-forte: #ffc01f;
+    --cor-destaque-fraca: rgba(255, 211, 77, 0.10);
 
-
-    --cor-destaque: #ffd956;
-    --cor-destaque-suave: #f0c247;
-
-
-    --cor-borda: #6b6250;
-    --cor-borda-forte: #a2842f;
-
-
-    --cor-texto: #f0ece0;
+    /* --- Texto ------------------------------------------------------------ */
+    --cor-texto: #e9ebf0;
     --cor-texto-claro: #ffffff;
-    --cor-texto-suave: #e2ddd0;
-    --cor-texto-fraco: #a8a294;
+    --cor-texto-suave: #b4bac7;
+    --cor-texto-fraco: #7c8494;
+    --cor-texto-invertido: #1a1708;
 
+    /* --- Elevação --------------------------------------------------------- */
+    --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --sombra-2: 0 8px 24px -8px rgba(0, 0, 0, 0.7);
+    --sombra-3: 0 20px 48px -16px rgba(0, 0, 0, 0.85);
 
-    --brilho-cartao: 0 4px 18px rgba(0, 0, 0, 0.55);
-    --brilho-cartao-hover: 0 12px 30px rgba(0, 0, 0, 0.65),
-                           0 0 0 1px rgba(255, 217, 86, 0.30),
-                           0 0 40px rgba(255, 217, 86, 0.08);
+    /* --- Tipografia ------------------------------------------------------- */
+    --fonte-corpo: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --fonte-mono: 'DM Mono', ui-monospace, 'Courier New', monospace;
 
+    --txt-display: clamp(2.5rem, 7.5vw, 5.25rem);   /* h1 do hero          */
+    --txt-titulo:  clamp(1.5rem, 3.2vw, 2.25rem);   /* h2 de seção         */
+    --txt-sub:     clamp(1.0625rem, 1.6vw, 1.25rem);/* linha de apoio      */
+    --txt-corpo:   1rem;
+    --txt-peq:     0.875rem;
+    --txt-micro:   0.75rem;
 
-    --fonte-corpo: 'Segoe UI', Arial, Helvetica, sans-serif;
-    --fonte-mono: 'DM Mono', 'Courier New', monospace;
+    /* --- Espaçamento (escala 4px) ----------------------------------------- */
+    --e-1: 0.25rem;
+    --e-2: 0.5rem;
+    --e-3: 0.75rem;
+    --e-4: 1rem;
+    --e-5: 1.5rem;
+    --e-6: 2rem;
+    --e-7: 3rem;
+    --e-8: 4rem;
 
+    --espaco-secao: clamp(4rem, 9vw, 7.5rem) clamp(1.25rem, 5vw, 3rem);
+    --largura-max: 1200px;
+    --largura-texto: 65ch;
+    --altura-header: 72px;
 
-    --espaco-secao: 60px 40px;
-    --espaco-cartao: 32px;
-    --altura-header: 100px;
-    --tamanho-titulo: 88px;
+    /* --- Formas ----------------------------------------------------------- */
+    --raio-1: 8px;
+    --raio-2: 14px;
+    --raio-3: 20px;
+    --raio-pill: 999px;
 
-
-    --transicao-cor: color 0.3s, border-color 0.3s;
-    --transicao-cartao: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    --transicao-botao: background-color 0.3s, border-color 0.3s, transform 0.2s;
+    /* --- Movimento -------------------------------------------------------- */
+    --mola: cubic-bezier(0.22, 1, 0.36, 1);
+    --t-rapida: 0.18s var(--mola);
+    --t-media: 0.32s var(--mola);
 }

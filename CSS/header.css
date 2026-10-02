@@ -1,110 +1,195 @@
-header{
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 40px;
-    padding: 14px 48px;
-    background-color: var(--cor-fundo-header);
-    border-bottom: 1px solid var(--cor-borda);
+/* ==========================================================================
+   Cabeçalho — marca, navegação e menu móvel (sem JavaScript)
+   ========================================================================== */
+
+.cabecalho{
     position: sticky;
     top: 0;
     z-index: 100;
-}
-
-
-.logo-complete{
+    min-height: var(--altura-header);
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 12px;
+    gap: var(--e-6);
+    padding: var(--e-3) clamp(1.25rem, 5vw, 3rem);
+    background-color: rgba(8, 9, 11, 0.72);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border-bottom: 1px solid var(--cor-borda);
 }
 
-.logo{
-    height: 60px;
+/* --- Marca --------------------------------------------------------------- */
+
+.marca{
+    display: flex;
+    align-items: center;
+    gap: var(--e-3);
+}
+
+.marca-logo{
+    height: 38px;
     width: auto;
 }
 
-.logo-text{
-    font-size: 28px;
+.marca-nome{
+    font-size: 1.3125rem;
     font-weight: 800;
-    letter-spacing: 3px;
-    color: var(--cor-destaque);
+    letter-spacing: -0.01em;
+    color: var(--cor-texto-claro);
     line-height: 1;
 }
 
-
-.navigation ul{
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: end;
-    gap: 28px;
-}
-
-.navigation a{
-    display: block;
-    padding: 4px 2px;
-    color: var(--cor-texto-fraco);
-    font-size: 15px;
-    border-bottom: 1px solid transparent;
-    transition: var(--transicao-cor);
-}
-
-.navigation a:hover{
+.marca-nome span{
     color: var(--cor-destaque);
-    border-bottom-color: var(--cor-destaque);
 }
 
+/* --- Navegação ----------------------------------------------------------- */
 
-@media (max-width: 1024px){
-    :root{
-        --altura-header: 175px;
+.navegacao ul{
+    display: flex;
+    justify-content: center;
+    gap: var(--e-2);
+}
+
+.navegacao a{
+    display: block;
+    padding: var(--e-2) var(--e-3);
+    border-radius: var(--raio-1);
+    color: var(--cor-texto-suave);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: color var(--t-rapida), background-color var(--t-rapida);
+}
+
+.navegacao a:hover{
+    color: var(--cor-texto-claro);
+    background-color: var(--cor-superficie-fraca);
+}
+
+/* --- Botão de ação no cabeçalho ------------------------------------------ */
+
+.cabecalho-cta{
+    display: inline-flex;
+    align-items: center;
+    padding: var(--e-2) var(--e-5);
+    border-radius: var(--raio-pill);
+    border: 1px solid var(--cor-borda-forte);
+    color: var(--cor-texto);
+    font-size: var(--txt-peq);
+    font-weight: 600;
+    white-space: nowrap;
+    transition: border-color var(--t-rapida), color var(--t-rapida), background-color var(--t-rapida);
+}
+
+.cabecalho-cta:hover{
+    border-color: var(--cor-destaque);
+    background-color: var(--cor-destaque-fraca);
+    color: var(--cor-destaque);
+}
+
+/* --- Botão hambúrguer (oculto no desktop) -------------------------------- */
+
+.menu-botao{
+    display: none;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-1);
+    cursor: pointer;
+    transition: border-color var(--t-rapida);
+}
+
+.menu-botao:hover{
+    border-color: var(--cor-borda-forte);
+}
+
+.menu-botao span,
+.menu-botao span::before,
+.menu-botao span::after{
+    content: '';
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--cor-texto);
+    transition: transform var(--t-media), opacity var(--t-rapida);
+}
+
+.menu-botao span::before{ transform: translateY(-6px); }
+.menu-botao span::after{  transform: translateY(4px);  }
+
+.menu-check:focus-visible + .menu-botao{
+    outline: 2px solid var(--cor-destaque);
+    outline-offset: 3px;
+}
+
+/* Estado aberto: vira um "X" */
+.menu-check:checked + .menu-botao span{
+    background-color: transparent;
+}
+
+.menu-check:checked + .menu-botao span::before{
+    transform: translateY(0) rotate(45deg);
+}
+
+.menu-check:checked + .menu-botao span::after{
+    transform: translateY(-2px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   Versão móvel — gaveta deslizante
+   ========================================================================== */
+
+@media (max-width: 900px){
+    .cabecalho{
+        grid-template-columns: 1fr auto;
     }
 
-    header{
-        grid-template-columns: 1fr;
-        justify-items: center;
-        gap: 16px;
-        padding: 14px 20px;
+    .menu-botao{
+        display: grid;
+        order: 2;
     }
 
-    .logo-text{
-        font-size: 24px;
+    .navegacao{
+        order: 3;
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-rows: 0fr;
+        overflow: hidden;
+        transition: grid-template-rows var(--t-media);
     }
 
-    .navigation ul{
-        grid-auto-flow: row;
-        grid-template-columns: repeat(4, auto);
-        justify-content: center;
-        gap: 14px 24px;
+    .menu-check:checked ~ .navegacao{
+        grid-template-rows: 1fr;
+    }
+
+    .navegacao ul{
+        flex-direction: column;
+        gap: 0;
+        padding-top: var(--e-3);
+        min-height: 0;
+    }
+
+    .navegacao li + li{
+        border-top: 1px solid var(--cor-borda);
+    }
+
+    .navegacao a{
+        padding: var(--e-3) var(--e-2);
+        font-size: 1rem;
+    }
+
+    .cabecalho-cta{
+        display: none;
     }
 }
 
-
-@media (max-width: 600px){
-    :root{
-        --altura-header: 185px;
-    }
-
-    header{
-        padding: 12px 14px;
-        gap: 12px;
-    }
-
-    .logo{
-        height: 42px;
-    }
-
-    .logo-text{
-        font-size: 19px;
-        letter-spacing: 2px;
-    }
-
-    .navigation ul{
-        grid-template-columns: repeat(3, auto);
-        gap: 10px 16px;
-    }
-
-    .navigation a{
-        font-size: 13px;
+/* Navegadores sem suporte a transição de grid continuam funcionais:
+   a gaveta simplesmente abre e fecha sem animação. */
+@supports not (grid-template-rows: 0fr){
+    @media (max-width: 900px){
+        .navegacao{ display: none; }
+        .menu-check:checked ~ .navegacao{ display: block; }
     }
 }

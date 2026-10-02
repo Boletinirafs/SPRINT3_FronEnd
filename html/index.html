@@ -3,200 +3,517 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VisuAll — reconhecimento de Libras em tempo real dentro do aplicativo de câmera do smartphone JOVI.">
     <title>VisuAll — Libras em tempo real na câmera do seu JOVI</title>
-    <link rel="shortcut icon" href="../.images/logo.png" type="image/x-icon">
+
+    <meta name="description" content="O VisuAll é um modo Libras integrado ao aplicativo de câmera do smartphone JOVI: reconhece sinais em tempo real e exibe a tradução na tela, com processamento 100% local e sem depender de internet.">
+    <meta name="author" content="Grupo VisuAll — FIAP 1ESPZ">
+    <meta name="theme-color" content="#08090b">
+
+    <!-- Pré-visualização em redes sociais e aplicativos de mensagem -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="VisuAll">
+    <meta property="og:title" content="VisuAll — Libras em tempo real na câmera do seu JOVI">
+    <meta property="og:description" content="Um modo Libras dentro do app de câmera: reconhece sinais em tempo real, traduz na tela e funciona offline.">
+    <meta property="og:image" content="../images/Visuall_placeholder.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+
+    <!-- Antecipa a conexão com o servidor de fontes, reduzindo o atraso de carga -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="stylesheet" href="../CSS/_global.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo-complete">
-            <img src="../.images/logo.png" alt="" class="logo">
-            <span class="logo-text">VisuAll</span>
-        </div>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
 
-        <nav class="navigation" aria-label="Menu principal">
+    <header class="cabecalho">
+        <a class="marca" href="#inicio" aria-label="VisuAll — início">
+            <img src="../images/logo.png" alt="" class="marca-logo" width="38" height="38">
+            <span class="marca-nome">Visu<span>All</span></span>
+        </a>
+
+        <!-- Menu móvel sem JavaScript: a caixa de seleção guarda o estado aberto/fechado -->
+        <input type="checkbox" id="abrir-menu" class="menu-check so-leitor"
+               aria-label="Abrir e fechar o menu">
+        <label for="abrir-menu" class="menu-botao" aria-hidden="true">
+            <span></span>
+        </label>
+
+        <nav class="navegacao" aria-label="Menu principal">
             <ul>
                 <li><a href="#solucao">Solução</a></li>
                 <li><a href="#funcionamento">Funcionamento</a></li>
-                <li><a href="#publico">Público-Alvo</a></li>
+                <li><a href="#publico">Público</a></li>
+                <li><a href="#tecnologia">Tecnologia</a></li>
                 <li><a href="#galeria">Galeria</a></li>
                 <li><a href="#equipe">Equipe</a></li>
-                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
+
+        <a class="cabecalho-cta" href="#contato">Falar com a equipe</a>
     </header>
 
-    <main>
+    <main id="conteudo">
 
-        <section class="secao" id="hero">
-            <div class="content">
-                <h1>VisuAll</h1>
-                <p>Reconhecimento de Libras em tempo real, direto no aplicativo de câmera do seu JOVI.</p>
+        <!-- ================= HERO ================= -->
+        <section class="hero" id="inicio">
+            <div class="hero-conteudo">
+                <p class="hero-selo">Challenge JOVI · 2026</p>
+
+                <h1>Libras em tempo real, <em>na câmera que você já tem</em></h1>
+
+                <p class="hero-lead">
+                    O VisuAll é um modo Libras dentro do próprio aplicativo de câmera do
+                    smartphone JOVI. Aponte, sinalize e a tradução aparece na tela —
+                    sem instalar nada extra e sem precisar de internet.
+                </p>
+
+                <div class="hero-acoes">
+                    <a class="btn btn--primario" href="#funcionamento">Ver como funciona</a>
+                    <a class="btn btn--secundario" href="#galeria">Conhecer o app</a>
+                </div>
+            </div>
+
+            <dl class="hero-metricas">
+                <div class="metrica">
+                    <dt>10 mi+</dt>
+                    <dd>brasileiros com algum grau de deficiência auditiva</dd>
+                </div>
+                <div class="metrica">
+                    <dt>100%</dt>
+                    <dd>do processamento acontece no próprio aparelho</dd>
+                </div>
+                <div class="metrica">
+                    <dt>0</dt>
+                    <dd>downloads extras: já vive no app de câmera</dd>
+                </div>
+            </dl>
+        </section>
+
+        <!-- ================= SOLUÇÃO ================= -->
+        <section class="secao secao--alt" id="solucao">
+            <div class="recipiente">
+                <div class="secao-cabecalho revela">
+                    <p class="secao-rotulo">01 — O ponto de partida</p>
+                    <h2 class="secao-titulo">Uma conversa que simplesmente não acontece</h2>
+                    <p class="secao-lead">
+                        Antes de escrever uma linha de código, fomos atrás da pergunta certa.
+                    </p>
+                </div>
+
+                <div class="grade-solucao revela">
+                    <article class="cartao">
+                        <span class="cartao-numero">problema</span>
+                        <h3>O que nos fez pensar?</h3>
+                        <p>
+                            Mais de 10 milhões de brasileiros têm algum grau de deficiência
+                            auditiva, e a Libras é a língua materna de boa parte dessa comunidade.
+                            Ainda assim, a comunicação do dia a dia com quem não sinaliza
+                            continua dependendo de papel, celular digitado ou de um intérprete
+                            que quase nunca está por perto.
+                        </p>
+                    </article>
+
+                    <article class="cartao cartao--resposta">
+                        <span class="cartao-numero">solução</span>
+                        <h3>O que construímos?</h3>
+                        <p>
+                            O VisuAll nasceu dentro do Challenge JOVI com uma pergunta simples:
+                            e se a câmera que já está no bolso de todo mundo pudesse fazer essa ponte?
+                        </p>
+                        <p>
+                            A resposta é um modo Libras integrado ao app de câmera do smartphone.
+                            Ao apontar a câmera, o sistema rastreia mãos, rosto e expressões faciais
+                            em tempo real, reconhece os sinais e exibe a tradução na tela.
+                        </p>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <section class="secao" id="solucao">
-            <div class="content" id="problema">
-                <h2>Qual problema nos fez pensar?</h2>
-                <p>Mais de 10 milhões de brasileiros têm algum grau de deficiência auditiva, e a Libras é a língua materna de boa parte dessa comunidade. Ainda assim, a comunicação do dia a dia com quem não sinaliza continua dependendo de papel, celular digitado ou de um intérprete que quase nunca está por perto.</p>
-            </div>
-
-            <div class="content" id="resolucao">
-                <h2>Qual é nossa solução?</h2>
-                <p>O VisuAll nasceu dentro do Challenge JOVI com uma pergunta simples: e se a câmera que já está no bolso de todo mundo pudesse fazer essa ponte?</p>
-                <p>A solução é um modo Libras integrado ao próprio app de câmera do smartphone. Ao apontar a câmera, o sistema rastreia mãos, rosto e expressões faciais em tempo real, reconhece os sinais e exibe a tradução na tela — sem instalar nada extra, sem depender de conexão com a internet.</p>
-            </div>
-        </section>
-
+        <!-- ================= FUNCIONAMENTO ================= -->
         <section class="secao" id="funcionamento">
-            <div class="content">
-                <h2>Como funciona?</h2>
-                <ol>
-                    <li><p>Captura — a câmera do celular registra os movimentos das mãos e do rosto.</p></li>
-                    <li><p>Rastreamento — o MediaPipe extrai os pontos-chave de mãos e face, incluindo marcadores não-manuais como o movimento das sobrancelhas.</p></li>
-                    <li><p>Reconhecimento — modelos de machine learning (MLP e LSTM) classificam sinais estáticos e em movimento.</p></li>
-                    <li><p>Tradução — o texto aparece na tela em tempo real, dentro da mesma interface de câmera que o usuário já conhece.</p></li>
+            <div class="recipiente">
+                <div class="secao-cabecalho revela">
+                    <p class="secao-rotulo">02 — Funcionamento</p>
+                    <h2 class="secao-titulo">Da câmera ao texto, em quatro etapas</h2>
+                    <p class="secao-lead">
+                        Todo o caminho roda no aparelho, em sequência, enquanto a pessoa sinaliza.
+                    </p>
+                </div>
+
+                <ol class="etapas revela">
+                    <li class="etapa">
+                        <h3>Captura</h3>
+                        <p>A câmera do celular registra os movimentos das mãos e do rosto.</p>
+                    </li>
+                    <li class="etapa">
+                        <h3>Rastreamento</h3>
+                        <p>
+                            O MediaPipe extrai os pontos-chave de mãos e face, incluindo marcadores
+                            não-manuais como o movimento das sobrancelhas.
+                        </p>
+                    </li>
+                    <li class="etapa">
+                        <h3>Reconhecimento</h3>
+                        <p>
+                            Modelos de machine learning (MLP e LSTM) classificam sinais estáticos
+                            e sinais em movimento.
+                        </p>
+                    </li>
+                    <li class="etapa">
+                        <h3>Tradução</h3>
+                        <p>
+                            O texto aparece na tela em tempo real, dentro da mesma interface de
+                            câmera que o usuário já conhece.
+                        </p>
+                    </li>
                 </ol>
-                <p class="destaque-local">E nada disso sai do aparelho: todo o processamento é local, sem nuvem — funciona em qualquer lugar, inclusive offline.</p>
+
+                <div class="destaque-local revela">
+                    <p>
+                        E nada disso sai do aparelho: todo o processamento é local, sem nuvem —
+                        funciona em qualquer lugar, inclusive offline.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section class="secao" id="publico">
-            <div class="content">
-                <h2>Quem usa o VisuAll?</h2>
-                <p class="intro-publico">A barreira quase nunca está na pessoa surda: ela já se comunica com fluência. Está em quem não entende Libras — e é nesse lado que o VisuAll age.</p>
+        <!-- ================= PÚBLICO ================= -->
+        <section class="secao secao--alt" id="publico">
+            <div class="recipiente">
+                <div class="secao-cabecalho revela">
+                    <p class="secao-rotulo">03 — Público-alvo</p>
+                    <h2 class="secao-titulo">Quem usa o VisuAll</h2>
+                    <p class="secao-lead">
+                        A barreira quase nunca está na pessoa surda: ela já se comunica com
+                        fluência. Está em quem não entende Libras — e é nesse lado que o VisuAll age.
+                    </p>
+                </div>
 
-                <div class="grade-publico">
+                <div class="grade-publico revela">
                     <article class="card-publico">
                         <h3>Quem aponta a câmera</h3>
-                        <p>Pessoas ouvintes que não sabem Libras: estudantes, professores, atendentes, colegas e familiares. Em vez de papel ou gestos improvisados, basta abrir a câmera.</p>
+                        <p>
+                            Pessoas ouvintes que não sabem Libras: estudantes, professores,
+                            atendentes, colegas e familiares. Em vez de papel ou gestos
+                            improvisados, basta abrir a câmera.
+                        </p>
                     </article>
 
                     <article class="card-publico">
                         <h3>Quem se beneficia</h3>
-                        <p>Pessoas surdas e falantes de Libras ganham autonomia: comunicam-se na própria língua, e o esforço de compreensão passa para o outro lado da conversa.</p>
+                        <p>
+                            Pessoas surdas e falantes de Libras ganham autonomia: comunicam-se
+                            na própria língua, e o esforço de compreensão passa para o outro
+                            lado da conversa.
+                        </p>
                     </article>
 
                     <article class="card-publico">
                         <h3>Onde acontece</h3>
-                        <p>Sala de aula, balcão de atendimento, consultório, convívio cotidiano. Situações comuns em que não há intérprete disponível e a conversa simplesmente não acontece.</p>
+                        <p>
+                            Sala de aula, balcão de atendimento, consultório, convívio cotidiano.
+                            Situações comuns em que não há intérprete disponível e a conversa
+                            simplesmente não acontece.
+                        </p>
                     </article>
 
                     <article class="card-publico">
                         <h3>Por que importa</h3>
-                        <p>O recurso já vive dentro do app de câmera, e não em um aplicativo separado que ninguém lembra de baixar. Está pronto no momento em que a conversa precisa acontecer.</p>
+                        <p>
+                            O recurso já vive dentro do app de câmera, e não em um aplicativo
+                            separado que ninguém lembra de baixar. Está pronto no momento em que
+                            a conversa precisa acontecer.
+                        </p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="secao" id="galeria">
-            <div class="content">
-                <h2>Galeria</h2>
-                <p>O VisuAll em funcionamento: telas do aplicativo, protótipos e o processo por trás do reconhecimento.</p>
+        <!-- ================= TECNOLOGIA ================= -->
+        <section class="secao" id="tecnologia">
+            <div class="recipiente">
+                <div class="secao-cabecalho revela">
+                    <p class="secao-rotulo">04 — Tecnologia</p>
+                    <h2 class="secao-titulo">O que roda por baixo</h2>
+                    <p class="secao-lead">
+                        Decisões técnicas tomadas para caber em um celular comum, sem servidor
+                        e sem latência de rede.
+                    </p>
+                </div>
 
-                <div class="grade-galeria">
+                <dl class="grade-tecnologia revela">
+                    <div class="item-tecnologia">
+                        <dt>MediaPipe</dt>
+                        <dd>
+                            Extração dos pontos-chave de mãos e face, incluindo marcadores
+                            não-manuais da Libras.
+                        </dd>
+                    </div>
+                    <div class="item-tecnologia">
+                        <dt>MLP</dt>
+                        <dd>
+                            Classificação de sinais estáticos, a partir da configuração das mãos
+                            em um único quadro.
+                        </dd>
+                    </div>
+                    <div class="item-tecnologia">
+                        <dt>LSTM</dt>
+                        <dd>
+                            Reconhecimento de sinais em movimento, considerando a sequência
+                            temporal dos quadros.
+                        </dd>
+                    </div>
+                    <div class="item-tecnologia">
+                        <dt>Execução no aparelho</dt>
+                        <dd>
+                            Inferência local no Android, sem nuvem: nenhuma imagem do usuário
+                            é enviada para fora do celular.
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ================= GALERIA ================= -->
+        <section class="secao secao--alt" id="galeria">
+            <div class="recipiente">
+                <div class="secao-cabecalho revela">
+                    <p class="secao-rotulo">05 — Galeria</p>
+                    <h2 class="secao-titulo">O VisuAll em funcionamento</h2>
+                    <p class="secao-lead">
+                        Telas do aplicativo, protótipos e o processo por trás do reconhecimento.
+                    </p>
+                </div>
+
+                <div class="grade-galeria revela">
                     <figure>
-                        <img src="../.images/.galeria/tela-inicial.jpg" alt="Tela inicial do aplicativo VisuAll com o modo Libras ao lado da câmera comum">
-                        <figcaption>O modo Libras convive com a câmera comum, sem mudar o que o usuário já conhece.</figcaption>
+                        <div class="moldura">
+                            <img src="../images/galeria/tela-inicial.jpg"
+                                 alt="Tela inicial do aplicativo VisuAll, com o modo Libras ao lado da câmera comum"
+                                 loading="lazy" decoding="async">
+                        </div>
+                        <figcaption>
+                            O modo Libras convive com a câmera comum, sem mudar o que o
+                            usuário já conhece.
+                        </figcaption>
                     </figure>
 
                     <figure>
-                        <img src="../.images/.galeria/libras.jpg" alt="Pontos de rastreamento das mãos sobrepostos à imagem da câmera">
-                        <figcaption>Reconhecimento em tempo real, com os pontos de rastreamento das mãos.</figcaption>
+                        <div class="moldura">
+                            <img src="../images/galeria/libras.jpg"
+                                 alt="Pontos de rastreamento das mãos sobrepostos à imagem da câmera"
+                                 loading="lazy" decoding="async">
+                        </div>
+                        <figcaption>
+                            Reconhecimento em tempo real, com os pontos de rastreamento das mãos.
+                        </figcaption>
                     </figure>
 
                     <figure>
-                        <img src="../.images/.galeria/historico.jpg" alt="Histórico exibido na tela após a captura">
-                        <figcaption>O histórico vai sendo salvo enquanto a pessoa sinaliza.</figcaption>
+                        <div class="moldura">
+                            <img src="../images/galeria/historico.jpg"
+                                 alt="Histórico de sinais traduzidos exibido na tela após a captura"
+                                 loading="lazy" decoding="async">
+                        </div>
+                        <figcaption>
+                            O histórico vai sendo salvo enquanto a pessoa sinaliza.
+                        </figcaption>
                     </figure>
                 </div>
             </div>
         </section>
 
+        <!-- ================= EQUIPE ================= -->
         <section class="secao" id="equipe">
-            <h2>Integrantes da Equipe</h2>
-            <p>Conheça os integrantes do Grupo VisuAll!</p>
+            <div class="recipiente">
+                <div class="secao-cabecalho revela">
+                    <p class="secao-rotulo">06 — Equipe</p>
+                    <h2 class="secao-titulo">Quem construiu o VisuAll</h2>
+                    <p class="secao-lead">
+                        Cinco estudantes de Engenharia de Software da FIAP, turma 1ESPZ.
+                    </p>
+                </div>
 
-            <div class="content">
-                <article class="integrante">
-                    <img src="../.images/.team/joão.jpeg" alt="Foto de João Victor Pereira Gimenes" class="foto">
-                    <h3>João Victor Pereira Gimenes</h3>
-                    <p class="funcao">Modelos de IA · Detecção Facial</p>
-                    <a href="https://www.linkedin.com/in/jo%C3%A3o-victor-pereira-gimenes-191615374/" target="_blank" rel="noopener" class="link-perfil">LinkedIn</a>
-                </article>
+                <div class="grade-equipe revela">
+                    <article class="integrante">
+                        <img src="../images/team/joao.jpeg" alt="João Victor Pereira Gimenes"
+                             class="integrante-foto" width="88" height="88" loading="lazy">
+                        <h3>João Victor Pereira Gimenes</h3>
+                        <p class="integrante-rm">RM 571662</p>
+                        <p class="integrante-funcao">Modelos de IA · Detecção facial</p>
+                        <a class="link-perfil" target="_blank" rel="noopener"
+                           href="https://www.linkedin.com/in/jo%C3%A3o-victor-pereira-gimenes-191615374/">
+                            LinkedIn <span aria-hidden="true">↗</span>
+                        </a>
+                    </article>
 
-                <article class="integrante">
-                    <img src="../.images/.team/juan.jpeg" alt="Foto de Juan Duarte Moura" class="foto">
-                    <h3>Juan Duarte Moura</h3>
-                    <p class="funcao">Liderança · Modelos de IA</p>
-                    <a href="https://www.linkedin.com/in/juan-duarte-moura/" target="_blank" rel="noopener" class="link-perfil">LinkedIn</a>
-                </article>
+                    <article class="integrante">
+                        <img src="../images/team/juan.jpeg" alt="Juan Duarte Moura"
+                             class="integrante-foto" width="88" height="88" loading="lazy">
+                        <h3>Juan Duarte Moura</h3>
+                        <p class="integrante-rm">RM 570331</p>
+                        <p class="integrante-funcao">Liderança · Modelos de IA</p>
+                        <a class="link-perfil" target="_blank" rel="noopener"
+                           href="https://www.linkedin.com/in/juan-duarte-moura/">
+                            LinkedIn <span aria-hidden="true">↗</span>
+                        </a>
+                    </article>
 
-                <article class="integrante">
-                    <img src="../.images/.team/julio.jpeg" alt="Foto de Julio Cesar Silva Cocco" class="foto">
-                    <h3>Julio Cesar Silva Cocco</h3>
-                    <p class="funcao">Apoio no treinamento · Funcionalidades do app</p>
-                    <a href="https://www.linkedin.com/in/julio-cesar-da-silva-cocco-085400338/" target="_blank" rel="noopener" class="link-perfil">LinkedIn</a>
-                </article>
+                    <article class="integrante">
+                        <img src="../images/team/julio.jpeg" alt="Julio Cesar da Silva Cocco"
+                             class="integrante-foto" width="88" height="88" loading="lazy">
+                        <h3>Julio Cesar da Silva Cocco</h3>
+                        <p class="integrante-rm">RM 569463</p>
+                        <p class="integrante-funcao">Treinamento · Funcionalidades do app</p>
+                        <a class="link-perfil" target="_blank" rel="noopener"
+                           href="https://www.linkedin.com/in/julio-cesar-da-silva-cocco-085400338/">
+                            LinkedIn <span aria-hidden="true">↗</span>
+                        </a>
+                    </article>
 
-                <article class="integrante">
-                    <img src="../.images/.team/rafael.jpeg" alt="Foto de Rafael Boletini de Oliveira" class="foto">
-                    <h3>Rafael Boletini de Oliveira</h3>
-                    <p class="funcao">Modelos de IA · Refatoração e debug</p>
-                    <a href="https://www.linkedin.com/in/rafael-boletini-de-oliveira-24b782275/" target="_blank" rel="noopener" class="link-perfil">LinkedIn</a>
-                </article>
+                    <article class="integrante">
+                        <img src="../images/team/rafael.jpeg" alt="Rafael Boletini de Oliveira"
+                             class="integrante-foto" width="88" height="88" loading="lazy">
+                        <h3>Rafael Boletini de Oliveira</h3>
+                        <p class="integrante-rm">RM 570219</p>
+                        <p class="integrante-funcao">Modelos de IA · Refatoração e debug</p>
+                        <a class="link-perfil" target="_blank" rel="noopener"
+                           href="https://www.linkedin.com/in/rafael-boletini-de-oliveira-24b782275/">
+                            LinkedIn <span aria-hidden="true">↗</span>
+                        </a>
+                    </article>
 
-                <article class="integrante">
-                    <img src="../.images/.team/victor.png" alt="Foto de Victor Rossi Sales Zanandré" class="foto">
-                    <h3>Victor Rossi Sales Zanandré</h3>
-                    <p class="funcao">Modelos de IA · App Android</p>
-                    <a href="https://www.linkedin.com/in/victor-zanandre/" target="_blank" rel="noopener" class="link-perfil">LinkedIn</a>
-                </article>
+                    <article class="integrante">
+                        <img src="../images/team/victor.png" alt="Victor Rossi Sales Zanandré"
+                             class="integrante-foto" width="88" height="88" loading="lazy">
+                        <h3>Victor Rossi Sales Zanandré</h3>
+                        <p class="integrante-rm">RM 573844</p>
+                        <p class="integrante-funcao">Modelos de IA · App Android</p>
+                        <a class="link-perfil" target="_blank" rel="noopener"
+                           href="https://www.linkedin.com/in/victor-zanandre/">
+                            LinkedIn <span aria-hidden="true">↗</span>
+                        </a>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <section class="secao" id="contato">
-            <div class="content">
-                <h2>Fale com a equipe</h2>
-                <p>Ficou com alguma dúvida, quer sugerir uma melhoria ou conhecer o projeto de perto? Mande uma mensagem.</p>
+        <!-- ================= CONTATO ================= -->
+        <section class="secao secao--alt" id="contato">
+            <div class="recipiente">
+                <div class="secao-cabecalho revela">
+                    <p class="secao-rotulo">07 — Contato</p>
+                    <h2 class="secao-titulo">Fale com a equipe</h2>
+                    <p class="secao-lead">
+                        Ficou com alguma dúvida, quer sugerir uma melhoria ou conhecer o
+                        projeto de perto? Mande uma mensagem.
+                    </p>
+                </div>
 
-                <form class="formulario-contato" action="mailto:visuall2k26@gmail.com" method="post" enctype="text/plain">
-                    <div class="campo">
-                        <label for="nome">Nome</label>
-                        <input type="text" id="nome" name="nome" required>
+                <div class="grade-contato revela">
+                    <form class="formulario-contato" action="mailto:visuall2k26@gmail.com"
+                          method="post" enctype="text/plain">
+                        <div class="campo">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome"
+                                   placeholder="Como podemos te chamar?" autocomplete="name" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email"
+                                   placeholder="voce@exemplo.com" autocomplete="email" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="assunto">Assunto</label>
+                            <input type="text" id="assunto" name="assunto"
+                                   placeholder="Sobre o que você quer falar?">
+                        </div>
+
+                        <div class="campo">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" rows="6"
+                                      placeholder="Escreva sua mensagem" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn--primario">Enviar mensagem</button>
+
+                        <p class="formulario-nota">
+                            Ao enviar, a mensagem é aberta no aplicativo de e-mail do seu
+                            dispositivo com os campos já preenchidos.
+                        </p>
+                    </form>
+
+                    <div class="painel-contato">
+                        <h3>Contato direto</h3>
+
+                        <dl class="contato-item">
+                            <dt>E-mail</dt>
+                            <dd><a href="mailto:visuall2k26@gmail.com">visuall2k26@gmail.com</a></dd>
+                        </dl>
+
+                        <dl class="contato-item">
+                            <dt>Projeto</dt>
+                            <dd>Challenge JOVI — 1º semestre de 2026</dd>
+                        </dl>
+
+                        <dl class="contato-item">
+                            <dt>Instituição</dt>
+                            <dd>FIAP · Engenharia de Software · turma 1ESPZ</dd>
+                        </dl>
                     </div>
-
-                    <div class="campo">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="campo">
-                        <label for="assunto">Assunto</label>
-                        <input type="text" id="assunto" name="assunto">
-                    </div>
-
-                    <div class="campo">
-                        <label for="mensagem">Mensagem</label>
-                        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-                    </div>
-
-                    <button type="submit" class="confirma">Enviar mensagem</button>
-                </form>
-
-                <address class="contatos-diretos">
-                    <p>E-mail: <a href="mailto:visuall2k26@gmail.com">visuall2k26@gmail.com</a></p>
-                </address>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <footer>
-        <p>VisuAll © 2026 — Challenge JOVI · FIAP Engenharia de Software, turma 1ESPZ</p>
+    <footer class="rodape">
+        <div class="rodape-grade">
+            <div class="rodape-marca">
+                <a class="marca" href="#inicio">
+                    <img src="../images/logo.png" alt="" class="marca-logo" width="38" height="38">
+                    <span class="marca-nome">Visu<span>All</span></span>
+                </a>
+                <p>
+                    Reconhecimento de Libras em tempo real dentro do aplicativo de câmera
+                    do smartphone JOVI. Projeto acadêmico desenvolvido no Challenge JOVI.
+                </p>
+            </div>
+
+            <nav class="rodape-coluna" aria-labelledby="rodape-projeto">
+                <h2 id="rodape-projeto">Projeto</h2>
+                <ul>
+                    <li><a href="#solucao">Solução</a></li>
+                    <li><a href="#funcionamento">Funcionamento</a></li>
+                    <li><a href="#publico">Público-alvo</a></li>
+                    <li><a href="#tecnologia">Tecnologia</a></li>
+                </ul>
+            </nav>
+
+            <nav class="rodape-coluna" aria-labelledby="rodape-equipe">
+                <h2 id="rodape-equipe">Equipe</h2>
+                <ul>
+                    <li><a href="#equipe">Integrantes</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="mailto:visuall2k26@gmail.com">visuall2k26@gmail.com</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="rodape-base">
+            <p>VisuAll © 2026 — Challenge JOVI</p>
+            <p>FIAP · Engenharia de Software · 1ESPZ</p>
+        </div>
     </footer>
 
 </body>

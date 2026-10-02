@@ -1,604 +1,758 @@
-main{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        'hero          hero'
-        'solucao       solucao'
-        'funcionamento funcionamento'
-        'publico       publico'
-        'galeria       galeria'
-        'equipe        equipe'
-        'contato       contato';
-}
+/* ==========================================================================
+   Corpo — seções, componentes e grades
+   ========================================================================== */
 
-
-#hero          {grid-area: hero;}
-#solucao       {grid-area: solucao;}
-#funcionamento {grid-area: funcionamento;}
-#publico       {grid-area: publico;}
-#galeria       {grid-area: galeria;}
-#equipe        {grid-area: equipe;}
-#contato       {grid-area: contato;}
+/* --------------------------------------------------------------------------
+   1. Estrutura de seção
+   -------------------------------------------------------------------------- */
 
 .secao{
     padding: var(--espaco-secao);
-    border-bottom: 1px solid rgba(255, 217, 86, 0.12);
     scroll-margin-top: var(--altura-header);
 }
 
-
-.content{
-    background-color: var(--cor-cartao);
-    border: 1px solid var(--cor-borda);
-    border-radius: 14px;
-    padding: var(--espaco-cartao);
-    box-shadow: var(--brilho-cartao);
-    transition: var(--transicao-cartao);
-
-
-    height: 100%;
+/* Alterna o fundo para separar seções sem depender de bordas fortes */
+.secao--alt{
+    background-color: var(--cor-fundo-alt);
+    border-block: 1px solid var(--cor-borda);
 }
 
-.content:hover{
-    border-color: var(--cor-borda-forte);
-    box-shadow: var(--brilho-cartao-hover);
-    transform: translateY(-5px);
+.recipiente{
+    width: 100%;
+    max-width: var(--largura-max);
+    margin-inline: auto;
 }
 
+/* Cabeçalho de seção ------------------------------------------------------- */
 
-.content{
-    position: relative;
-    overflow: hidden;
+.secao-cabecalho{
+    max-width: var(--largura-texto);
+    margin-bottom: var(--e-7);
 }
 
-.content::before{
+.secao-rotulo{
+    display: inline-flex;
+    align-items: center;
+    gap: var(--e-2);
+    margin-bottom: var(--e-4);
+    font-family: var(--fonte-mono);
+    font-size: var(--txt-micro);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cor-destaque);
+}
+
+.secao-rotulo::before{
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg,
-        transparent,
-        var(--cor-destaque-suave),
-        transparent);
-    opacity: 0.55;
-    transition: opacity 0.3s;
+    width: 28px;
+    height: 1px;
+    background-color: var(--cor-destaque);
+    opacity: 0.6;
 }
 
-.content:hover::before{
-    opacity: 1;
-}
-
-.content h2{
-    font-size: 26px;
+.secao-titulo{
+    font-size: var(--txt-titulo);
     font-weight: 800;
     color: var(--cor-texto-claro);
-    margin-bottom: 14px;
 }
 
-.content p{
+.secao-lead{
+    margin-top: var(--e-4);
+    font-size: var(--txt-sub);
+    line-height: 1.65;
     color: var(--cor-texto-suave);
-    font-size: 16px;
-    line-height: 1.75;
 }
 
+/* --------------------------------------------------------------------------
+   2. Botões
+   -------------------------------------------------------------------------- */
 
-.content p + p{
-    margin-top: 16px;
+.btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--e-2);
+    padding: var(--e-3) var(--e-6);
+    border: 1px solid transparent;
+    border-radius: var(--raio-pill);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--t-rapida), border-color var(--t-rapida),
+                color var(--t-rapida), transform var(--t-rapida), box-shadow var(--t-rapida);
 }
 
+.btn--primario{
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto-invertido);
+    box-shadow: 0 6px 20px -8px rgba(255, 211, 77, 0.55);
+}
 
-#hero{
+.btn--primario:hover{
+    background-color: var(--cor-destaque-forte);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px -8px rgba(255, 211, 77, 0.65);
+}
+
+.btn--secundario{
+    border-color: var(--cor-borda-forte);
+    color: var(--cor-texto);
+}
+
+.btn--secundario:hover{
+    border-color: var(--cor-destaque);
+    color: var(--cor-destaque);
+    background-color: var(--cor-destaque-fraca);
+    transform: translateY(-2px);
+}
+
+.btn:active{
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   3. Hero
+   -------------------------------------------------------------------------- */
+
+.hero{
     position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
     text-align: center;
-    padding: 100px 20px 90px;
-    background: radial-gradient(ellipse at center top,
-        #2e2506 0%,
-        var(--cor-fundo) 62%);
+    padding: clamp(5rem, 12vw, 9rem) clamp(1.25rem, 5vw, 3rem) clamp(4rem, 8vw, 6rem);
+    background:
+        radial-gradient(ellipse 70% 55% at 50% -10%, rgba(255, 211, 77, 0.16), transparent 70%),
+        var(--cor-fundo);
 }
 
-#hero::before{
+/* Malha técnica ao fundo, esmaecida nas bordas */
+.hero::before{
     content: '';
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(255, 217, 86, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 217, 86, 0.07) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 0%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 0%, transparent 70%);
+        linear-gradient(rgba(255, 211, 77, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 211, 77, 0.055) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 65% 65% at 50% 0%, #000 10%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 65% 65% at 50% 0%, #000 10%, transparent 75%);
     pointer-events: none;
 }
 
-
-#hero .content{
+.hero-conteudo{
     position: relative;
     z-index: 1;
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    height: auto;
-    overflow: visible;
+    max-width: 840px;
 }
 
-#hero .content::before{
-    display: none;
-}
-
-#hero .content:hover{
-    transform: none;
-    box-shadow: none;
-}
-
-#hero h1{
-    font-size: var(--tamanho-titulo);
-    font-weight: 700;
-    letter-spacing: 2px;
-    line-height: 1.15;
-    color: var(--cor-texto-claro);
-    margin-bottom: 16px;
-
-    text-shadow: 0 0 60px rgba(255, 217, 86, 0.28);
-}
-
-#hero p{
+.hero-selo{
+    display: inline-flex;
+    align-items: center;
+    gap: var(--e-2);
+    margin-bottom: var(--e-5);
+    padding: var(--e-1) var(--e-4);
+    border: 1px solid var(--cor-borda-destaque);
+    border-radius: var(--raio-pill);
+    background-color: var(--cor-destaque-fraca);
     font-family: var(--fonte-mono);
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: var(--cor-destaque-suave);
-    max-width: 620px;
-    margin: 0 auto;
+    font-size: var(--txt-micro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cor-destaque);
 }
 
+.hero-selo::before{
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--cor-destaque);
+    box-shadow: 0 0 0 3px rgba(255, 211, 77, 0.2);
+}
 
-#solucao{
+.hero h1{
+    font-size: var(--txt-display);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    color: var(--cor-texto-claro);
+}
+
+.hero h1 em{
+    font-style: normal;
+    background: linear-gradient(100deg, var(--cor-destaque), #ffe9a3 55%, var(--cor-destaque-forte));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-lead{
+    max-width: 62ch;
+    margin: var(--e-5) auto 0;
+    font-size: var(--txt-sub);
+    line-height: 1.65;
+    color: var(--cor-texto-suave);
+}
+
+.hero-acoes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--e-3);
+    margin-top: var(--e-7);
+}
+
+/* Faixa de números -------------------------------------------------------- */
+
+.hero-metricas{
+    position: relative;
+    z-index: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: var(--e-5);
+    width: 100%;
+    max-width: 820px;
+    margin-top: clamp(3rem, 7vw, 5rem);
+    padding-top: var(--e-6);
+    border-top: 1px solid var(--cor-borda);
 }
 
-#solucao h2{
-    font-size: 22px;
+.metrica dt{
+    font-family: var(--fonte-mono);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    color: var(--cor-destaque);
+    line-height: 1.1;
 }
 
+.metrica dd{
+    margin-top: var(--e-2);
+    font-size: var(--txt-peq);
+    line-height: 1.5;
+    color: var(--cor-texto-fraco);
+}
 
-#funcionamento ol{
+/* --------------------------------------------------------------------------
+   4. Cartão genérico
+   -------------------------------------------------------------------------- */
+
+.cartao{
+    position: relative;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-2);
+    background-color: var(--cor-superficie);
+    box-shadow: var(--sombra-2);
+    transition: border-color var(--t-media), transform var(--t-media), box-shadow var(--t-media);
+}
+
+.cartao:hover{
+    border-color: var(--cor-borda-forte);
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-3);
+}
+
+.cartao h3{
+    font-size: 1.1875rem;
+    color: var(--cor-texto-claro);
+    margin-bottom: var(--e-3);
+}
+
+.cartao p{
+    color: var(--cor-texto-suave);
+    line-height: 1.7;
+}
+
+.cartao p + p{
+    margin-top: var(--e-4);
+}
+
+.cartao-numero{
+    display: block;
+    margin-bottom: var(--e-4);
+    font-family: var(--fonte-mono);
+    font-size: var(--txt-peq);
+    color: var(--cor-destaque);
+}
+
+/* --------------------------------------------------------------------------
+   5. Seção Solução — problema x resposta
+   -------------------------------------------------------------------------- */
+
+.grade-solucao{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 22px;
-    margin-top: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--e-5);
+}
+
+/* Destaca visualmente o cartão da resposta */
+.cartao--resposta{
+    background:
+        linear-gradient(170deg, rgba(255, 211, 77, 0.07), transparent 55%),
+        var(--cor-superficie-alt);
+    border-color: var(--cor-borda-destaque);
+}
+
+/* --------------------------------------------------------------------------
+   6. Seção Funcionamento — etapas numeradas
+   -------------------------------------------------------------------------- */
+
+.etapas{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: var(--e-5);
     counter-reset: etapa;
 }
 
-#funcionamento li{
+.etapa{
     counter-increment: etapa;
-    padding-top: 48px;
     position: relative;
+    padding-top: var(--e-6);
+    border-top: 1px solid var(--cor-borda);
 }
 
-
-#funcionamento li::before{
+.etapa::before{
     content: '0' counter(etapa);
     position: absolute;
+    top: -1px;
     left: 0;
-    top: 0;
-    width: 36px;
-    height: 36px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--cor-borda-forte);
-    border-radius: 8px;
-    background-color: rgba(255, 217, 86, 0.10);
+    padding-top: var(--e-2);
+    border-top: 2px solid var(--cor-destaque);
     font-family: var(--fonte-mono);
-    font-size: 13px;
+    font-size: var(--txt-peq);
     color: var(--cor-destaque);
 }
 
-#funcionamento li p{
-    font-size: 15px;
+.etapa h3{
+    font-size: 1.0625rem;
+    color: var(--cor-texto-claro);
+    margin-bottom: var(--e-2);
 }
 
+.etapa p{
+    font-size: var(--txt-peq);
+    line-height: 1.65;
+    color: var(--cor-texto-suave);
+}
+
+/* Bloco de destaque "processamento local" --------------------------------- */
 
 .destaque-local{
-    margin-top: 28px;
-    padding: 22px 26px 22px 62px;
-    position: relative;
-    border-radius: 12px;
-    border: 1px solid var(--cor-borda-forte);
-    background: rgba(255, 217, 86, 0.07);
-    font-size: 17px;
-    line-height: 1.65;
-    color: var(--cor-texto) !important;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--e-4);
+    align-items: start;
+    margin-top: var(--e-7);
+    padding: var(--e-5);
+    border: 1px solid var(--cor-borda-destaque);
+    border-left: 3px solid var(--cor-destaque);
+    border-radius: var(--raio-2);
+    background-color: var(--cor-destaque-fraca);
 }
-
 
 .destaque-local::before{
     content: '//';
-    position: absolute;
-    left: 26px;
-    top: 22px;
     font-family: var(--fonte-mono);
-    font-size: 17px;
+    font-size: 1.125rem;
+    line-height: 1.5;
     color: var(--cor-destaque);
 }
 
-
-.intro-publico{
-    max-width: 68ch;
-    font-size: 17px;
+.destaque-local p{
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--cor-texto);
 }
 
+/* --------------------------------------------------------------------------
+   7. Seção Público-alvo
+   -------------------------------------------------------------------------- */
 
 .grade-publico{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
-    gap: 18px;
-    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--e-4);
 }
 
-
 .card-publico{
-    background: rgba(0, 0, 0, 0.22);
+    padding: var(--e-5);
     border: 1px solid var(--cor-borda);
-    border-left: 3px solid var(--cor-destaque);
-    border-radius: 10px;
-    padding: 20px;
-    transition: var(--transicao-cartao);
+    border-radius: var(--raio-2);
+    background-color: var(--cor-superficie);
+    transition: border-color var(--t-media), transform var(--t-media), background-color var(--t-media);
 }
 
 .card-publico:hover{
-    border-color: var(--cor-borda-forte);
-    border-left-color: var(--cor-destaque);
+    border-color: var(--cor-borda-destaque);
+    background-color: var(--cor-superficie-alt);
     transform: translateY(-4px);
 }
 
 .card-publico h3{
+    margin-bottom: var(--e-3);
     font-family: var(--fonte-mono);
-    font-size: 13px;
-    letter-spacing: 1px;
+    font-size: var(--txt-micro);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--cor-destaque);
-    margin-bottom: 10px;
 }
 
 .card-publico p{
-    font-size: 14.5px;
-    line-height: 1.65;
-}
-
-
-.grade-galeria{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 24px;
-    margin-top: 32px;
-}
-
-.grade-galeria figure{
-    background: rgba(0, 0, 0, 0.22);
-    border: 1px solid var(--cor-borda);
-    border-radius: 12px;
-    padding: 16px;
-    transition: var(--transicao-cartao);
-}
-
-.grade-galeria figure:hover{
-    border-color: var(--cor-borda-forte);
-    transform: translateY(-4px);
-}
-
-.grade-galeria img{
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 14px;
-}
-
-.grade-galeria figcaption{
-    font-size: 13.5px;
-    line-height: 1.55;
+    font-size: var(--txt-peq);
+    line-height: 1.7;
     color: var(--cor-texto-suave);
 }
 
+/* --------------------------------------------------------------------------
+   8. Seção Tecnologia
+   -------------------------------------------------------------------------- */
+
+.grade-tecnologia{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: var(--e-4);
+}
+
+.item-tecnologia{
+    padding: var(--e-5);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-2);
+    background-color: var(--cor-superficie-fraca);
+    transition: border-color var(--t-media), background-color var(--t-media);
+}
+
+.item-tecnologia:hover{
+    border-color: var(--cor-borda-forte);
+    background-color: var(--cor-superficie);
+}
+
+.item-tecnologia dt{
+    font-weight: 600;
+    color: var(--cor-texto-claro);
+}
+
+.item-tecnologia dd{
+    margin-top: var(--e-2);
+    font-size: var(--txt-peq);
+    line-height: 1.6;
+    color: var(--cor-texto-fraco);
+}
+
+/* --------------------------------------------------------------------------
+   9. Galeria
+   -------------------------------------------------------------------------- */
+
+.grade-galeria{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--e-6);
+}
+
+.grade-galeria figure{
+    display: grid;
+    gap: var(--e-4);
+}
+
+/* Moldura de celular, para as capturas lerem como tela de app */
+.moldura{
+    position: relative;
+    padding: 10px;
+    border: 1px solid var(--cor-borda-forte);
+    border-radius: var(--raio-3);
+    background-color: var(--cor-superficie);
+    box-shadow: var(--sombra-2);
+    transition: border-color var(--t-media), transform var(--t-media), box-shadow var(--t-media);
+}
+
+.grade-galeria figure:hover .moldura{
+    border-color: var(--cor-borda-destaque);
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-3);
+}
+
+.moldura img{
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    object-fit: cover;
+    border-radius: 13px;
+    background-color: #000;
+}
+
+.grade-galeria figcaption{
+    font-size: var(--txt-peq);
+    line-height: 1.6;
+    color: var(--cor-texto-suave);
+}
+
+/* --------------------------------------------------------------------------
+   10. Equipe
+   -------------------------------------------------------------------------- */
+
+.grade-equipe{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: var(--e-4);
+}
+
+.integrante{
+    display: grid;
+    justify-items: center;
+    gap: var(--e-1);
+    padding: var(--e-6) var(--e-4);
+    text-align: center;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-2);
+    background-color: var(--cor-superficie);
+    transition: border-color var(--t-media), transform var(--t-media), box-shadow var(--t-media);
+}
+
+.integrante:hover{
+    border-color: var(--cor-borda-destaque);
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-3);
+}
+
+.integrante-foto{
+    width: 88px;
+    height: 88px;
+    margin-bottom: var(--e-3);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--cor-borda-forte);
+    transition: border-color var(--t-media);
+}
+
+.integrante:hover .integrante-foto{
+    border-color: var(--cor-destaque);
+}
+
+.integrante h3{
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: var(--cor-texto-claro);
+}
+
+.integrante-rm{
+    font-family: var(--fonte-mono);
+    font-size: var(--txt-micro);
+    color: var(--cor-texto-fraco);
+}
+
+.integrante-funcao{
+    margin-top: var(--e-2);
+    font-size: var(--txt-micro);
+    line-height: 1.5;
+    color: var(--cor-destaque);
+}
+
+.link-perfil{
+    display: inline-flex;
+    align-items: center;
+    gap: var(--e-1);
+    margin-top: var(--e-4);
+    padding: var(--e-1) var(--e-4);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-pill);
+    font-size: var(--txt-micro);
+    font-weight: 500;
+    color: var(--cor-texto-suave);
+    transition: border-color var(--t-rapida), color var(--t-rapida), background-color var(--t-rapida);
+}
+
+.link-perfil:hover{
+    border-color: var(--cor-destaque);
+    background-color: var(--cor-destaque-fraca);
+    color: var(--cor-destaque);
+}
+
+/* --------------------------------------------------------------------------
+   11. Contato
+   -------------------------------------------------------------------------- */
+
+.grade-contato{
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: start;
+}
 
 .formulario-contato{
     display: grid;
-    gap: 16px;
-    max-width: 580px;
-    margin-top: 28px;
+    gap: var(--e-4);
 }
 
 .campo{
     display: grid;
-    gap: 7px;
+    gap: var(--e-2);
 }
 
 .campo label{
     font-family: var(--fonte-mono);
-    font-size: 12px;
-    letter-spacing: 3px;
+    font-size: var(--txt-micro);
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--cor-destaque-suave);
+    color: var(--cor-texto-fraco);
 }
 
 .campo input,
 .campo textarea{
-    padding: 12px 14px;
-    border-radius: 8px;
+    padding: var(--e-3) var(--e-4);
     border: 1px solid var(--cor-borda);
-    background-color: rgba(0, 0, 0, 0.25);
-    color: var(--cor-texto);
-    font-family: var(--fonte-corpo);
-    font-size: 15px;
-    transition: border-color 0.3s, background-color 0.3s;
+    border-radius: var(--raio-1);
+    background-color: var(--cor-fundo);
+    font-size: 0.9375rem;
     resize: vertical;
+    transition: border-color var(--t-rapida), background-color var(--t-rapida), box-shadow var(--t-rapida);
 }
 
 .campo input::placeholder,
 .campo textarea::placeholder{
     color: var(--cor-texto-fraco);
+    opacity: 0.7;
 }
 
+.campo input:hover,
+.campo textarea:hover{
+    border-color: var(--cor-borda-forte);
+}
 
 .campo input:focus,
 .campo textarea:focus{
+    outline: none;
     border-color: var(--cor-destaque);
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: var(--cor-superficie);
+    box-shadow: 0 0 0 3px rgba(255, 211, 77, 0.14);
 }
 
-.confirma{
-    justify-self: start;
-    padding: 14px 36px;
-    border: none;
-    border-radius: 8px;
-    background-color: var(--cor-destaque);
-    color: #2b2820;
-    font-family: var(--fonte-corpo);
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: var(--transicao-botao);
+/* Validação nativa: só sinaliza depois que o usuário digita algo */
+.campo input:not(:placeholder-shown):invalid,
+.campo textarea:not(:placeholder-shown):invalid{
+    border-color: #ff6b6b;
 }
 
-.confirma:hover{
-    background-color: var(--cor-destaque-suave);
-    transform: translateY(-2px);
+.formulario-nota{
+    font-size: var(--txt-micro);
+    line-height: 1.6;
+    color: var(--cor-texto-fraco);
 }
 
-.confirma:active{
-    transform: translateY(0);
-}
+/* Painel de contato direto ------------------------------------------------ */
 
-
-.contatos-diretos{
-    font-style: normal;
+.painel-contato{
     display: grid;
-    gap: 10px;
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid var(--cor-borda);
-    font-size: 15px;
-    color: var(--cor-texto-suave);
+    gap: var(--e-5);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-2);
+    background-color: var(--cor-superficie);
+    font-style: normal;
 }
 
-.contatos-diretos a{
+.painel-contato h3{
+    font-size: 1.0625rem;
+    color: var(--cor-texto-claro);
+}
+
+.contato-item{
+    display: grid;
+    gap: var(--e-1);
+}
+
+.contato-item dt{
+    font-family: var(--fonte-mono);
+    font-size: var(--txt-micro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cor-texto-fraco);
+}
+
+.contato-item dd{
+    font-size: 0.9375rem;
+    color: var(--cor-texto-suave);
+    word-break: break-word;
+}
+
+.contato-item dd a{
     color: var(--cor-destaque);
     border-bottom: 1px solid transparent;
-    transition: var(--transicao-cor);
+    transition: border-color var(--t-rapida);
 }
 
-.contatos-diretos a:hover{
+.contato-item dd a:hover{
     border-bottom-color: var(--cor-destaque);
 }
 
+/* --------------------------------------------------------------------------
+   12. Revelação ao rolar — nativa, sem JavaScript
+   -------------------------------------------------------------------------- */
 
-#equipe > h2{
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--cor-texto-claro);
-    margin-bottom: 8px;
-}
-
-#equipe > p{
-    color: var(--cor-texto-suave);
-    margin-bottom: 32px;
-}
-
-
-#equipe .content{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 20px;
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    height: auto;
-    overflow: visible;
-}
-
-#equipe .content::before{
-    display: none;
-}
-
-#equipe .content:hover{
-    transform: none;
-    box-shadow: none;
-}
-
-.integrante{
-    background-color: var(--cor-cartao);
-    border: 1px solid var(--cor-borda);
-    border-radius: 14px;
-    padding: 32px 18px;
-    text-align: center;
-    box-shadow: var(--brilho-cartao);
-    transition: var(--transicao-cartao);
-}
-
-.integrante:hover{
-    border-color: var(--cor-borda-forte);
-    box-shadow: var(--brilho-cartao-hover);
-    transform: translateY(-5px);
-}
-
-.foto{
-    width: 84px;
-    height: 84px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--cor-destaque);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    margin: 0 auto 14px;
-}
-
-.integrante h3{
-    font-size: 15px;
-    color: var(--cor-texto-claro);
-    line-height: 1.35;
-    margin-bottom: 6px;
-}
-
-.integrante .funcao{
-    font-family: var(--fonte-mono);
-    font-size: 12px;
-    line-height: 1.5;
-    color: var(--cor-destaque-suave);
-    margin-bottom: 14px;
-}
-
-.link-perfil{
-    display: inline-block;
-    padding: 6px 16px;
-    border: 1px solid var(--cor-borda);
-    border-radius: 20px;
-    font-size: 12px;
-    color: var(--cor-texto-suave);
-    transition: var(--transicao-botao);
-}
-
-.link-perfil:hover{
-    border-color: var(--cor-destaque);
-    color: var(--cor-destaque);
-}
-
-
-@media (max-width: 1024px){
-    :root{
-        --espaco-secao: 44px 26px;
-        --espaco-cartao: 24px;
-        --tamanho-titulo: 54px;
+@keyframes surgir{
+    from{
+        opacity: 0;
+        transform: translateY(26px);
     }
-
-    main{
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            'hero'
-            'solucao'
-            'funcionamento'
-            'publico'
-            'galeria'
-            'equipe'
-            'contato';
-    }
-
-    #hero{
-        padding: 64px 20px 60px;
+    to{
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-
-@media (max-width: 600px){
-    :root{
-        --espaco-secao: 36px 16px;
-        --espaco-cartao: 20px;
-        --tamanho-titulo: 36px;
+@supports (animation-timeline: view()){
+    @media (prefers-reduced-motion: no-preference){
+        .revela{
+            animation: surgir linear both;
+            animation-timeline: view();
+            animation-range: entry 5% cover 22%;
+        }
     }
+}
 
-    #solucao{
+/* --------------------------------------------------------------------------
+   13. Ajustes responsivos
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 900px){
+    .grade-contato{
         grid-template-columns: 1fr;
     }
+}
 
-    #funcionamento ol{
-        grid-template-columns: 1fr;
-        gap: 18px;
+@media (max-width: 560px){
+    .hero-acoes .btn{
+        width: 100%;
     }
 
-    .grade-publico{
-        grid-template-columns: 1fr;
-        gap: 14px;
-    }
-
-    .grade-galeria{
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-
-    .confirma{
-        justify-self: stretch;
-        text-align: center;
-    }
-
-    .contatos-diretos{
-        font-size: 14px;
-        word-break: break-word;
-    }
-
-    .intro-publico{
-        font-size: 15px;
-    }
-
-    .destaque-local{
-        padding: 18px 18px 18px 48px;
-        font-size: 15px;
-    }
-
-    .destaque-local::before{
-        left: 18px;
-        top: 18px;
-        font-size: 15px;
-    }
-
-    .content h2{
-        font-size: 21px;
-    }
-
-    .content p{
-        font-size: 15px;
-    }
-
-    #hero{
-        padding: 44px 16px 40px;
-    }
-
-    #hero p{
-        font-size: 14px;
-    }
-
-    #equipe .content{
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-    }
-
-    .foto{
-        width: 64px;
-        height: 64px;
+    .grade-equipe{
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 
     .integrante{
-        padding: 22px 12px;
+        padding: var(--e-5) var(--e-3);
     }
 
-    .integrante h3{
-        font-size: 13px;
+    .integrante-foto{
+        width: 68px;
+        height: 68px;
     }
 
+    .destaque-local{
+        grid-template-columns: 1fr;
+        gap: var(--e-2);
+    }
 
-    .content:hover,
-    .integrante:hover{
+    /* Sem hover em telas de toque: evita o "salto" disparado pelo tap */
+    .cartao:hover,
+    .card-publico:hover,
+    .integrante:hover,
+    .grade-galeria figure:hover .moldura{
         transform: none;
+    }
+}
+
+/* Telas largas: galeria limitada a 3 colunas para não achatar as molduras */
+@media (min-width: 1000px){
+    .grade-galeria{
+        grid-template-columns: repeat(3, 1fr);
     }
 }
