@@ -445,7 +445,7 @@
 
 .grade-galeria{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
     gap: var(--e-6);
 }
 
@@ -471,18 +471,43 @@
     box-shadow: var(--sombra-3);
 }
 
-.moldura img{
-    width: 100%;
-    aspect-ratio: 9 / 19.5;
-    object-fit: cover;
-    border-radius: 13px;
-    background-color: #000;
+.galeria-video{
+    width: min(100%, 900px);
+    justify-self: center;
+    margin-top: var(--e-5);
 }
 
-.grade-galeria figcaption{
-    font-size: var(--txt-peq);
-    line-height: 1.6;
-    color: var(--cor-texto-suave);
+.galeria-video-titulo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--e-3);
+    font-family: var(--fonte-mono);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--cor-texto-claro);
+}
+
+.galeria-video-titulo::before,
+.galeria-video-titulo::after{
+    content: "";
+    width: clamp(24px, 6vw, 56px);
+    height: 2px;
+    flex: 0 1 56px;
+    border-radius: var(--raio-pill);
+    background-color: var(--cor-destaque);
+    box-shadow: 0 0 14px var(--cor-destaque-fraca);
+}
+
+.moldura--video iframe{
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 13px;
+    background-color: #000;
 }
 
 /* --------------------------------------------------------------------------
@@ -533,19 +558,6 @@
     color: var(--cor-texto-claro);
 }
 
-.integrante-rm{
-    font-family: var(--fonte-mono);
-    font-size: var(--txt-micro);
-    color: var(--cor-texto-fraco);
-}
-
-.integrante-funcao{
-    margin-top: var(--e-2);
-    font-size: var(--txt-micro);
-    line-height: 1.5;
-    color: var(--cor-destaque);
-}
-
 .link-perfil{
     display: inline-flex;
     align-items: center;
@@ -570,96 +582,41 @@
    11. Contato
    -------------------------------------------------------------------------- */
 
+#contato{
+    padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+#contato .secao-cabecalho{
+    margin-bottom: var(--e-5);
+}
+
 .grade-contato{
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    gap: clamp(1.5rem, 4vw, 3.5rem);
-    align-items: start;
-}
-
-.formulario-contato{
-    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--e-4);
-}
-
-.campo{
-    display: grid;
-    gap: var(--e-2);
-}
-
-.campo label{
-    font-family: var(--fonte-mono);
-    font-size: var(--txt-micro);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--cor-texto-fraco);
-}
-
-.campo input,
-.campo textarea{
-    padding: var(--e-3) var(--e-4);
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio-1);
-    background-color: var(--cor-fundo);
-    font-size: 0.9375rem;
-    resize: vertical;
-    transition: border-color var(--t-rapida), background-color var(--t-rapida), box-shadow var(--t-rapida);
-}
-
-.campo input::placeholder,
-.campo textarea::placeholder{
-    color: var(--cor-texto-fraco);
-    opacity: 0.7;
-}
-
-.campo input:hover,
-.campo textarea:hover{
-    border-color: var(--cor-borda-forte);
-}
-
-.campo input:focus,
-.campo textarea:focus{
-    outline: none;
-    border-color: var(--cor-destaque);
-    background-color: var(--cor-superficie);
-    box-shadow: 0 0 0 3px rgba(255, 211, 77, 0.14);
-}
-
-/* Validação nativa: só sinaliza depois que o usuário digita algo */
-.campo input:not(:placeholder-shown):invalid,
-.campo textarea:not(:placeholder-shown):invalid{
-    border-color: #ff6b6b;
-}
-
-.formulario-nota{
-    font-size: var(--txt-micro);
-    line-height: 1.6;
-    color: var(--cor-texto-fraco);
-}
-
-/* Painel de contato direto ------------------------------------------------ */
-
-.painel-contato{
-    display: grid;
-    gap: var(--e-5);
-    padding: clamp(1.5rem, 3vw, 2rem);
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio-2);
-    background-color: var(--cor-superficie);
     font-style: normal;
 }
 
-.painel-contato h3{
-    font-size: 1.0625rem;
-    color: var(--cor-texto-claro);
-}
-
-.contato-item{
+.canal-contato{
     display: grid;
-    gap: var(--e-1);
+    align-content: center;
+    gap: var(--e-3);
+    min-width: 0;
+    min-height: 96px;
+    padding: var(--e-4) var(--e-5);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-2);
+    background-color: var(--cor-superficie);
+    transition: border-color var(--t-media), transform var(--t-media), box-shadow var(--t-media);
 }
 
-.contato-item dt{
+.canal-contato:hover{
+    border-color: var(--cor-borda-destaque);
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-3);
+}
+
+.canal-contato > span{
     font-family: var(--fonte-mono);
     font-size: var(--txt-micro);
     letter-spacing: 0.12em;
@@ -667,19 +624,17 @@
     color: var(--cor-texto-fraco);
 }
 
-.contato-item dd{
+.canal-contato a{
+    width: fit-content;
+    max-width: 100%;
     font-size: 0.9375rem;
-    color: var(--cor-texto-suave);
-    word-break: break-word;
-}
-
-.contato-item dd a{
     color: var(--cor-destaque);
     border-bottom: 1px solid transparent;
     transition: border-color var(--t-rapida);
+    overflow-wrap: anywhere;
 }
 
-.contato-item dd a:hover{
+.canal-contato a:hover{
     border-bottom-color: var(--cor-destaque);
 }
 
@@ -745,14 +700,8 @@
     .cartao:hover,
     .card-publico:hover,
     .integrante:hover,
+    .canal-contato:hover,
     .grade-galeria figure:hover .moldura{
         transform: none;
-    }
-}
-
-/* Telas largas: galeria limitada a 3 colunas para não achatar as molduras */
-@media (min-width: 1000px){
-    .grade-galeria{
-        grid-template-columns: repeat(3, 1fr);
     }
 }
